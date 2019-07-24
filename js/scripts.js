@@ -5,7 +5,7 @@ let availableGuesses = 5
 document.getElementById("prompt").innerHTML = "Available Guesses: " + availableGuesses
 
 let guessTotal = 0
-const guesses = []
+let guesses = []
 
 function guessUserNumber () {
     guessTotal += 1
@@ -46,4 +46,14 @@ function guessUserNumber () {
         document.getElementById("guessesTracker").appendChild(node);
     })
 
+}
+
+
+function restart() {
+    availableGuesses = 5
+    pcNumber = Math.floor(Math.random() * 100) + 1
+    console.log("PC Number is", pcNumber)
+    guesses = []
+    document.getElementById("guessesTracker").innerHTML = "";
+    document.getElementById("prompt").innerHTML = "Available Guesses: " + availableGuesses
 }
