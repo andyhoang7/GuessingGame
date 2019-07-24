@@ -1,21 +1,34 @@
 let pcNumber = Math.floor(Math.random() * 100) + 1
 console.log("PC Number is", pcNumber)
 
+let availableGuesses = 5
+document.getElementById("prompt").innerHTML = "Available Guesses: " + availableGuesses
 
+let guessTotal = 0
 
 function guessUserNumber () {
+    guessTotal += 1
+    if (availableGuesses === 1) {
+        document.getElementById("prompt").innerHTML = "Sorry! Please try again :)"
+        return
+    }
+
     const userGuess = document.getElementById("inputValue").value;
     
     if (userGuess > pcNumber) {
-        alert("Your number is too high!")
         document.getElementById("inputValue").value = "";
+        document.getElementById("prompt").innerHTML = "Your number is too high: " + (availableGuesses -= 1)
     }
     if (userGuess < pcNumber) {
-        alert("Your number is too low!")
         document.getElementById("inputValue").value = "";
+        document.getElementById("prompt").innerHTML = "Your number is too low: " + (availableGuesses -= 1)
+
     }
     if (userGuess == pcNumber) {
-        alert("Your number is CORRECT!")
         document.getElementById("inputValue").value = "";
+        document.getElementById("prompt").innerHTML = "Congratulations! You won in " + guessTotal + " guesses"
+ 
     }
+
+
 }
